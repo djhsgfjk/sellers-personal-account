@@ -1,13 +1,13 @@
 import React from 'react';
-import './App.css';
+import Navigaion from './components/Navigation';
 
 interface ReactElementsArray extends Array<React.ReactElement> {}
 type ReactNode = React.ReactElement | ReactElementsArray | boolean | null | undefined;
 
-function App({ header, children }: { header: string, children: ReactNode }) {
+function App({ navItems, children }: { navItems: { key: number, title: string, href: string, active: boolean }[], children: ReactNode }) {
   return (
     <div className="app">
-      <header className="app__header"><h1>{header}</h1></header>
+      <Navigaion navItems={navItems} />
       {children}
     </div>
   );
