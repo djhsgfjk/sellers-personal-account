@@ -1,16 +1,14 @@
-// В карточке объявления есть следующая информация о нем:
-// Картинка
-// Название;
-// Стоимость;
-// Количество просмотров;
-// Количество лайков;
-
 import React from 'react';
-import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Ad } from '../types';
 
 function AdCard({ ad } : { ad: Ad }) {
+    // Картинка
+    // Название;
+    // Стоимость;
+    // Количество просмотров;
+    // Количество лайков;
+
     return (
         <Card style={{ width: '18rem' }}>
           <Card.Img variant="top" src={ad.imageUrl} alt={ad.name} />
