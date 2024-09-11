@@ -5,3 +5,13 @@ export type ReactNode = React.ReactElement | ReactElementsArray | boolean | null
 
 export type navItem = { key: number, title: string, href: string, active: boolean };
 
+export type ad = {
+    id: string,
+    name: string,
+    description?: string,
+    price: number,
+    createdAt: string,
+    views: number,
+    likes: number,
+    imageUrl: string,
+};
