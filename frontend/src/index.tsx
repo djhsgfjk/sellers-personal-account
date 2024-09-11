@@ -6,7 +6,7 @@ import './index.css';
 import App from './App';
 import Ads from './components/Ads';
 import Orders from './components/Orders';
-import { navItem } from './types';
+import { NavItem } from './types';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -23,14 +23,14 @@ const navItems = [
     title: 'Заказы',
     href: '/orders',
   },
-] as navItem[];
+] as Array<NavItem>;
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: 
       <App 
-        navItems={navItems.map((item) => (item.key === 1 ? {...item, active: true} : {...item, active: false}))}
+        navItems={navItems.map((item: NavItem) => (item.key === 1 ? {...item, active: true} : {...item, active: false}))}
       >
         <Ads/>
       </App>,
@@ -39,7 +39,7 @@ const router = createBrowserRouter([
     path: "/ads",
     element: 
       <App 
-        navItems={navItems.map((item) => (item.key === 1 ? {...item, active: true} : {...item, active: false}))}
+        navItems={navItems.map((item: NavItem) => (item.key === 1 ? {...item, active: true} : {...item, active: false}))}
       >
         <Ads/>
       </App>,
@@ -48,7 +48,7 @@ const router = createBrowserRouter([
     path: "/orders",
     element: 
       <App 
-        navItems={navItems.map((item) => (item.key === 2 ? {...item, active: true} : {...item, active: false}))}
+        navItems={navItems.map((item: NavItem) => (item.key === 2 ? {...item, active: true} : {...item, active: false}))}
       >
         <Orders/>
       </App>,

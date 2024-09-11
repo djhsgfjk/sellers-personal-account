@@ -1,6 +1,6 @@
 import React from 'react';
 import AdCard from './AdCard';
-import { ad } from '../types';
+import { Ad } from '../types';
 
 const ads = [
   {
@@ -80,7 +80,7 @@ const ads = [
     "likes": 302,
     "imageUrl": ""
   }
-] as ad[];
+] as Array<Ad>;
 
 function Ads() {
   return (
@@ -92,7 +92,7 @@ function Ads() {
         gap: '32px',
       }}
     >
-        {ads.map((ad: ad) => (
+        {ads.map((ad: Ad) => (
           <AdCard ad={ad}/>
         ))}
     </div>

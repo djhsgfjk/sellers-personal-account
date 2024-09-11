@@ -8,9 +8,9 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import { ad } from '../types';
+import { Ad } from '../types';
 
-function AdCard({ ad } : { ad: ad }) {
+function AdCard({ ad } : { ad: Ad }) {
     return (
         <Card style={{ width: '18rem' }}>
           <Card.Img variant="top" src={ad.imageUrl} alt={ad.name} />

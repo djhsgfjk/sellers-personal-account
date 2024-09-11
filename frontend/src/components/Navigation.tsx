@@ -2,9 +2,9 @@ import React from 'react';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Offcanvas from 'react-bootstrap/Offcanvas';
-import { navItem } from '../types';
+import { NavItem } from '../types';
 
-function Navigaion({ navItems } : { navItems: navItem[] }) {
+function Navigaion({ navItems } : { navItems: Array<NavItem> }) {
   const expand = 'md';
   return (
     <Navbar expand={expand} 
