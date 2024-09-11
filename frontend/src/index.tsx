@@ -6,6 +6,7 @@ import './index.css';
 import App from './App';
 import Ads from './components/Ads';
 import Orders from './components/Orders';
+import { navItem } from './types';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -22,7 +23,7 @@ const navItems = [
     title: 'Заказы',
     href: '/orders',
   },
-] as { key: number, title: string, href: string, active: boolean }[];
+] as navItem[];
 
 const router = createBrowserRouter([
   {

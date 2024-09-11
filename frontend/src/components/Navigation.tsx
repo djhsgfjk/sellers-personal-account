@@ -2,14 +2,15 @@ import React from 'react';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Offcanvas from 'react-bootstrap/Offcanvas';
+import { navItem } from '../types';
 
-
-function Navigaion({ navItems } : { navItems: { key: number, title: string, href: string, active: boolean }[] }) {
+function Navigaion({ navItems } : { navItems: navItem[] }) {
   const expand = 'md';
   return (
     <Navbar expand={expand} 
         style={{
             flexWrap: 'nowrap',
+            marginBottom: '16px',
         }}
     >
         <Navbar.Brand >Личный кабинет продавца</Navbar.Brand>
