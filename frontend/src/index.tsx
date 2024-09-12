@@ -49,7 +49,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/ads/:id",
-    element: <AdPage/>,
+    element: <App 
+    navItems={navItems}
+    >
+      <AdPage/>
+    </App>,
   },
   {
     path: "/orders",
