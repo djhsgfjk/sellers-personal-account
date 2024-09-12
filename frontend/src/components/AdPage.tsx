@@ -1,29 +1,39 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ModalWindow from './ModalWindow';
 import AdEditor from './AdEditor';
 import Button from 'react-bootstrap/Button';
 import { Ad, urlParams } from '../types';
-
-const ad =   {
-    "id": "1",
-    "name": "Стул старинный",
-    "description": "Очень красивый",
-    "price": 2000,
-    "createdAt": "2022-08-12T20:16:55.351Z",
-    "views": 20,
-    "likes": 2,
-    "imageUrl": ""
-  } as Ad;
 	
 function AdPage() {
     const { id } = useParams<urlParams>();
 
+    const [ad, setAd] = useState({} as Ad);
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+    useEffect(() => {
+        const url = 'http://localhost:3000/advertisements/'+id;
+    
+        const request = new Request(url, {
+            method: "GET",
+        });
+    
+        fetch(request)
+        .then((response) => {
+            console.log('response', response);
+            if (response.ok) {
+                return response.json();
+            }
+        })
+        .then((result) => {
+            console.log('result', result);
+            setAd(result as Ad);
+        })
+    }, []);
   
     // Картинка
     // Название;
@@ -37,7 +47,7 @@ function AdPage() {
         <div className='ad-page'>
             <Button className='ad-page__button--edit' variant="primary" onClick={handleShow}><i className="bi bi-pencil-fill"></i> Редактировать</Button>
         <div className='ad-page__ad ad'>
-            <div className='ad__id'>id={id}</div>
+            {/* <div className='ad__id'>id={id}</div> */}
             <h2 className='ad__name'>{ad.name}</h2>
             <img className='ad__image' src={ad.imageUrl} alt={ad.name} />
             <div className='ad__description'>
