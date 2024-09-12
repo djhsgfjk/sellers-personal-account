@@ -1,5 +1,9 @@
 import React from 'react';
+import { useState } from 'react';
+import ModalWindow from './ModalWindow';
+import AdEditor from './AdEditor';
 import AdCard from './AdCard';
+import { Button } from 'react-bootstrap';
 import { Ad } from '../types';
 
 const ads = [
@@ -83,18 +87,27 @@ const ads = [
 ] as Array<Ad>;
 
 function Ads() {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
-    <div className="ads"
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        flexWrap: 'wrap',
-        gap: '32px',
-      }}
-    >
+    <div className="ads-page">
+      <Button className='ads-page__button--add' variant="primary" onClick={handleShow}><i class="bi bi-file-earmark-plus-fill"></i> Новое объявление</Button>
+      <div className="ads">
         {ads.map((ad: Ad) => (
           <AdCard ad={ad}/>
         ))}
+      </div>
+        <ModalWindow
+            title='Добавить объявление'  
+            show={show}
+            handleClose={handleClose}
+            showButtons={true}
+        >
+            <AdEditor />
+        </ModalWindow>
     </div>
   );
 }
