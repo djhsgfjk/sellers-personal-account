@@ -84,3 +84,8 @@ a {
   flex-wrap: wrap;
   gap: 32px;
 }
+
+.ad-editor__buttons {
+  display: flex;
+  justify-content: space-between;
+}

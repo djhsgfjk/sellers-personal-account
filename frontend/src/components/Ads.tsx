@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import ModalWindow from './ModalWindow';
 import AdEditor from './AdEditor';
 import AdCard from './AdCard';
@@ -12,6 +12,33 @@ function Ads() {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const handleSave = (ad: Ad) => {
+    const url = 'http://localhost:3000/advertisements';
+
+    const request = new Request(url, {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(ad),
+    });
+
+    fetch(request)
+    .then((response: any) => {
+      if (response.ok) {
+        setShow(false);
+        response.json()
+        .then((newAd: Ad) => {
+          setAds([...ads, newAd as Ad]);
+        });
+      } else {
+        return new Error;
+      }
+    })
+    .catch(() => {
+      alert('При сохранении возникала ошибка , попробуйте ещё раз');
+    })
+  }
 
   useEffect(() => {
     const url = 'http://localhost:3000/advertisements';
@@ -21,12 +48,12 @@ function Ads() {
     });
 
     fetch(request)
-    .then((response) => {
+    .then((response: any) => {
       if (response.ok) {
         return response.json();
       }
     })
-    .then((result) => {
+    .then((result: any) => {
       setAds(result as Array<Ad>);
     })
   }, []);
@@ -44,9 +71,8 @@ function Ads() {
             title='Добавить объявление'  
             show={show}
             handleClose={handleClose}
-            showButtons={true}
         >
-            <AdEditor />
+            <AdEditor handleClose={handleClose} handleSave={handleSave} />
         </ModalWindow>
     </div>
   );
