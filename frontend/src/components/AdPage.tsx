@@ -1,5 +1,9 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import { useState } from 'react';
+import ModalWindow from './ModalWindow';
+import AdEditor from './AdEditor';
+import Button from 'react-bootstrap/Button';
 import { Ad, urlParams } from '../types';
 
 const ad =   {
@@ -15,6 +19,12 @@ const ad =   {
 	
 function AdPage() {
     const { id } = useParams<urlParams>();
+
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+  
     // Картинка
     // Название;
     // Описание;
@@ -25,22 +35,33 @@ function AdPage() {
 
     return (
         <div className='ad-page'>
-            <div className='ad-page__id'>id={id}</div>
-            <h2 className='ad-page__name'>{ad.name}</h2>
-            <img className='ad-page__image' src={ad.imageUrl} alt={ad.name} />
-            <div className='ad-page__description'>
+            <Button className='ad-page__button--edit' variant="primary" onClick={handleShow}><i className="bi bi-pencil-fill"></i> Редактировать</Button>
+        <div className='ad-page__ad ad'>
+            <div className='ad__id'>id={id}</div>
+            <h2 className='ad__name'>{ad.name}</h2>
+            <img className='ad__image' src={ad.imageUrl} alt={ad.name} />
+            <div className='ad__description'>
                 <h3 className='ad-page-description__title'>Описание</h3>
                 <div className='ad-page-description__text'>{ad.description}</div>
             </div>
-            <h3 className='ad-page__price'>{ad.price}₽</h3>
-            <div className='ad-page__data'>
-                <div className='ad-page__views'>
+            <h3 className='ad__price'>{ad.price}₽</h3>
+            <div className='ad__data'>
+                <div className='ad__views'>
                     <b className='ad-page-views__title'><i className="bi bi-eye-fill"></i> Просмотры:</b> <span className='ad-page-views__text'>{ad.views}</span>
                 </div>
-                <div className='ad-page__likes'>
+                <div className='ad__likes'>
                     <b className='ad-page-likes__title'><i className="bi bi-heart-fill"></i> В избранном:</b> <span className='ad-page-views__text'>{ad.likes}</span>
                 </div>
             </div>
+        </div>
+            <ModalWindow
+                title='Редактировать объявление'  
+                show={show}
+                handleClose={handleClose}
+                showButtons={true}
+            >
+                <AdEditor ad={ad} />
+            </ModalWindow>
         </div>
     );
 }
