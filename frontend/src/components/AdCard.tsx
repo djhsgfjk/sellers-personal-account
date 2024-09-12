@@ -9,19 +9,21 @@ function AdCard({ ad } : { ad: Ad }) {
     // Количество просмотров;
     // Количество лайков;
 
-    return (
-        <Card className='ad-card'>
-          <Card.Img variant="top" src={ad.imageUrl} alt={ad.name} />
-          <Card.Body>
-            <Card.Title>{ad.name}</Card.Title>
-            <Card.Subtitle>{ad.price}₽</Card.Subtitle>
-            <Card.Text>
-                <div><i className="bi bi-eye-fill"></i> {ad.views}</div>
-                <div><i className="bi bi-heart-fill"></i> {ad.likes}</div>
-            </Card.Text>
-          </Card.Body>
-        </Card>
-      );
+  return (
+    <Card className='ad-card'>
+      <a className='ad-card__link' href={"ads/"+ad.id}>
+        <Card.Img variant="top" src={ad.imageUrl} alt={ad.name} />
+        <Card.Body>
+          <Card.Title>{ad.name}</Card.Title>
+          <Card.Subtitle>{ad.price}₽</Card.Subtitle>
+          <Card.Text>
+              <div><i className="bi bi-eye-fill"></i> {ad.views}</div>
+              <div><i className="bi bi-heart-fill"></i> {ad.likes}</div>
+          </Card.Text>
+        </Card.Body>
+      </a>
+    </Card>
+  );
 }
 
 export default AdCard;

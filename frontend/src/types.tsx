@@ -37,3 +37,7 @@ export type Order = {
     deliveryWay: string;
     total: number;
 }
+
+export type urlParams = {
+	id: string;
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, BrowserRouter, Routes, Route } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "bootstrap-icons/font/bootstrap-icons.css";
 import './index.css';
@@ -8,6 +8,8 @@ import App from './App';
 import Ads from './components/Ads';
 import Orders from './components/Orders';
 import { NavItem } from './types';
+import AdPage from "./components/AdPage";
+
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -44,6 +46,10 @@ const router = createBrowserRouter([
       >
         <Ads/>
       </App>,
+  },
+  {
+    path: "/ads/:id",
+    element: <AdPage/>,
   },
   {
     path: "/orders",
