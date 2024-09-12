@@ -14,6 +14,33 @@ function AdPage() {
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    const handleSave = (ad: Ad) => {
+        const url = 'http://localhost:3000/advertisements/'+id;
+    
+        const request = new Request(url, {
+            method: "PUT",
+            headers: {
+              'Content-Type': 'application/json;charset=utf-8'
+            },
+            body: JSON.stringify(ad),
+        });
+    
+        fetch(request)
+        .then((response: any) => {
+          if (response.ok) {
+            setShow(false);
+            response.json()
+            .then((newAd: Ad) => {
+                setAd(newAd as Ad);
+            });
+          } else {
+            return new Error;
+          }
+        })
+        .catch(() => {
+          alert('При сохранении возникала ошибка , попробуйте ещё раз');
+        })
+      }
 
     useEffect(() => {
         const url = 'http://localhost:3000/advertisements/'+id;
@@ -66,9 +93,8 @@ function AdPage() {
                 title='Редактировать объявление'  
                 show={show}
                 handleClose={handleClose}
-                showButtons={true}
             >
-                <AdEditor ad={ad} />
+                <AdEditor ad={ad} handleClose={handleClose} handleSave={handleSave} />
             </ModalWindow>
         </div>
     );
