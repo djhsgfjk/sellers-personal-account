@@ -13,7 +13,7 @@ function Navigaion({ navItems } : { navItems: Array<NavItem> }) {
             marginBottom: '16px',
         }}
     >
-        <Navbar.Brand >Личный кабинет продавца</Navbar.Brand>
+        <a href='/'><Navbar.Brand >Личный кабинет продавца</Navbar.Brand></a>
         <Navbar.Toggle />
         <Navbar.Offcanvas
             placement="end"

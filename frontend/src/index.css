@@ -12,6 +12,11 @@ code {
     monospace;
 }
 
+a {
+  color: unset;
+  text-decoration: unset;
+}
+
 .modal-dialog {
   margin: auto;
   height: 100%;
