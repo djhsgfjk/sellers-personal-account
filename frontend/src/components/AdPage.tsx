@@ -24,13 +24,11 @@ function AdPage() {
     
         fetch(request)
         .then((response) => {
-            console.log('response', response);
             if (response.ok) {
                 return response.json();
             }
         })
         .then((result) => {
-            console.log('result', result);
             setAd(result as Ad);
         })
     }, []);

@@ -22,13 +22,11 @@ function Ads() {
 
     fetch(request)
     .then((response) => {
-      console.log('response', response);
       if (response.ok) {
         return response.json();
       }
     })
     .then((result) => {
-      console.log('result', result);
       setAds(result as Array<Ad>);
     })
   }, []);
