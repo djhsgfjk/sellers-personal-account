@@ -10,7 +10,7 @@ function AdCard({ ad } : { ad: Ad }) {
     // Количество лайков;
 
     return (
-        <Card style={{ width: '14rem' }}>
+        <Card className='ad-card'>
           <Card.Img variant="top" src={ad.imageUrl} alt={ad.name} />
           <Card.Body>
             <Card.Title>{ad.name}</Card.Title>

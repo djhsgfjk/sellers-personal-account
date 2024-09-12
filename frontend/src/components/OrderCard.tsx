@@ -21,7 +21,7 @@ function OrderCard({ order } : { order: Order }) {
     // Кнопка “Показать все товары”
 
   return (
-    <Card style={{ width: '28rem' }}>
+    <Card className='order-card'>
       <Card.Body>
         <Card.Title>Заказ №{order.id}</Card.Title>
         <Card.Subtitle>{order.total}₽</Card.Subtitle>
