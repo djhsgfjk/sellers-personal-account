@@ -53,4 +53,9 @@ module.exports = {
     hot: true,
     historyApiFallback: true,
   },
+  performance: {
+    hints: false,
+    maxEntrypointSize: 512000,
+    maxAssetSize: 512000
+  }
 };
