@@ -49,7 +49,7 @@ module.exports = {
     extensions: [".js", ".tsx"],
   },
   devServer: {
-    port: 3000,
+    port: 8000,
     hot: true,
     historyApiFallback: true,
   },
