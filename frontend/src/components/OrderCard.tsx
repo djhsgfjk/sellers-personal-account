@@ -39,7 +39,6 @@ function OrderCard({ order } : { order: Order }) {
         showButtons={false}
         handleClose={handleClose}
         show={show}
-        windowWidth='40rem'
       >
         <div className="ads"
           style={{
